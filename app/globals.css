@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@font-face {
+  font-family: "Methanerse";
+  src: url("/methanerse-font/MethanerseFreeTrial-eZX7x.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Orbitron", sans-serif;
+  /* text-transform: uppercase; */
+}
+
+
+
+
+::-webkit-scrollbar {
+  width: 10px;               /* Width of the vertical scrollbar */
+  height: 10px;              /* Height of horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #222635;       /* Track background (dark gray) */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffafad;       /* Thumb color (pink) */
+  border-radius: 10px;
+  box-shadow: 0 0 10px #f472b6; /* Glow effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(89.2% 0.058 10.001);       /* Hover color */
+  box-shadow: 0 0 15px #f472b6;
+}
