@@ -25,13 +25,13 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full bg-slate-950 bg-opacity-80 backdrop-blur-md z-50 shadow-md transition-all duration-300 ${
-        scrolled ? "border-b border-rose-200 drop-shadow-[0_0_5px_rgb(255,46,158)]" : ""
+      className={`fixed top-0 left-0 w-full  bg-opacity-0 z-50  transition-all duration-300 ${
+        scrolled ? "border-b backdrop-blur-xl border-rose-200 drop-shadow-[0_0_10px_rgb(255,46,158)]" : ""
       }`}
     >
-      <div className="px-20 flex justify-between items-center h-20">
+      <div className="px-20 flex justify-between items-center h-14">
         {/* Logo / Name */}
-        <div className="text-4xl font-bold text-rose-200 drop-shadow-[0_0_20px_rgb(255,46,158)]">
+        <div className="text-3xl font-bold text-rose-100 drop-shadow-[0_0_20px_rgb(255,46,158)]">
           THEME VICE_
         </div>
 
