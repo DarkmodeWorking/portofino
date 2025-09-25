@@ -7,7 +7,7 @@ type Project = {
   title: string;
   desc: string;
   img: string;
-  tech: string[]; // array of SVG paths or URLs
+  tech: string[];
   link: string;
 };
 
@@ -55,40 +55,38 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-20 px-8 overflow-hidden min-h-screen bg-fixed bg-center bg-cover"
-			style={{ backgroundImage: "url('/vc2.jpg')" }}
+      className="relative py-16 px-6 sm:px-12 md:px-20 overflow-hidden min-h-screen bg-fixed bg-center bg-cover"
+      style={{ backgroundImage: "url('/vc2.jpg')" }}
     >
-
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/40 "></div>
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Section Content */}
-      <div className="relative px-20 mx-auto">
-        <h2 className="text-5xl font-bold mb-32 text-rose-100 drop-shadow-[0_0_20px_rgb(255,46,158)] text-center">
+      <div className="relative mx-auto">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-20 md:mb-32 text-rose-100 drop-shadow-[0_0_20px_rgb(255,46,158)] text-center">
           Developed Projects such as
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-16 md:gap-20">
           {projects.map((proj, idx) => (
             <motion.div
               key={idx}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="relative group rounded-2xl hover:border-2 border-rose-200 hover:drop-shadow-[0_0_20px_rgb(255,46,158)] overflow-hidden shadow-lg bg-slate-900/80 flex flex-col"
+              whileHover={{ scale: 1.03, rotate: 0.5 }}
+              transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              className="relative group rounded-2xl overflow-hidden shadow-lg bg-slate-900/80 flex flex-col min-h-[320px] border border-transparent hover:border-rose-200/70 hover:drop-shadow-[0_0_25px_rgb(255,46,158)] transition-all duration-500"
             >
-              {/* Project Image */}
-              <div className="relative h-52 w-full">
+              <div className="relative h-40 sm:h-52 w-full">
                 <Image
                   src={proj.img}
                   alt={proj.title}
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out z-0"
                 />
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              {/* Text content */}
-              <div className="p-6 flex flex-col flex-1">
-                {/* Header */}
-                <h3 className="text-2xl text-rose-200 drop-shadow-[0_0_20px_rgb(255,46,158)] font-semibold mb-4 flex items-center justify-between">
+              <div className="p-4 sm:p-6 flex flex-col flex-1 z-20">
+                <h3 className="text-xl sm:text-2xl text-rose-200 drop-shadow-[0_0_20px_rgb(255,46,158)] font-semibold mb-3 sm:mb-4 flex items-center justify-between">
                   <span>{proj.title}</span>
                   <a
                     href={proj.link}
@@ -100,26 +98,23 @@ export default function Projects() {
                   </a>
                 </h3>
 
-                {/* Description */}
-                <p className="text-rose-100 text-sm mb-8">
+                <p className="text-rose-100 text-sm sm:text-base mb-6 sm:mb-8">
                   {proj.desc}
                 </p>
 
-                {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2">
                   {proj.tech.map((techSrc, i) => (
-                    <div key={i} className="w-6 h-6">
-                      <img
-                        src={techSrc}
-                        alt="tech"
-                        width={24}
-                        height={24}
-                      />
-                    </div>
+                    <img
+                      key={i}
+                      src={techSrc}
+                      alt="tech"
+                      className="w-5 h-5 sm:w-6 sm:h-6 opacity-70 group-hover:opacity-100"
+                    />
                   ))}
                 </div>
               </div>
             </motion.div>
+
           ))}
         </div>
       </div>
